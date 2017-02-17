@@ -1,0 +1,43 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form novalidate name="editRepair" ng-submit="updateRepair()">
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
+          <h2 class="modal-title">Edit a repair</h2>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Name:</label>
+            <input class="form-control" name="name" type="text" ng-model="repair.name" required/>
+            <span class="text-danger" ng-show="editRepair.name.$touched && editRepair.name.$invalid">The name is required.</span>
+          </div>
+
+          <div class="form-group">
+            <label>Description:</label>
+            <textarea class="form-control" name="description" ng-model="repair.description" required/></textarea>
+            <span class="text-danger" ng-show="editRepair.description.$touched && editRepair.description.$invalid">The description is required.</span>
+          </div>
+
+          <div class="form-group">
+            <label>Price:</label>
+            <input class="form-control" name="price" type="number" ng-model="repair.price" required/>
+            <span class="text-danger" ng-show="editRepair.price.$touched && editRepair.price.$invalid">The price is required.</span>
+          </div>
+
+          <div class="form-group">
+            <label>Status:</label>
+            <select class="form-control" ng-model="repair.status" required>
+              <option ng-repeat="status in repair_statuses" value="{{status.name}}" required>{{ status.name }}</option>
+            </select>
+            <span class="text-danger" ng-show="editRepair.status.$touched && editRepair.status.$invalid">The status is required.</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" ng-click="$hide()">Close</button>
+          <input ng-disabled="editRepair.$invalid" class="btn btn-success" type="submit" value="Save"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

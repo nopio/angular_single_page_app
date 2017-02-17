@@ -16,6 +16,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
       url: '/customers/:customerId',
       templateUrl: 'angular/templates/customers/show.html',
       controller: 'CustomerController'
+    })
+    .state('/repair', {
+      url: '/customers/:customerId/repairs/:repairId',
+      templateUrl: 'angular/templates/repairs/show.html',
+      controller: 'RepairController'
     });
 
   $urlRouterProvider.otherwise('/');

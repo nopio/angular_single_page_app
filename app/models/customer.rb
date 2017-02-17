@@ -1,4 +1,6 @@
 class Customer < ApplicationRecord
+  has_many :repairs, dependent: :destroy
+
   validates :name, :street, :city, :post_code, :email, presence: true
   validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 

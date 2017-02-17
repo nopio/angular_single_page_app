@@ -19,7 +19,7 @@ app.controller('CustomersController', ['$scope', '$modal', 'Customer', function(
 
   $scope.createCustomer = function() {
     Customer.create($scope.new_customer).then(function(response) {
-      $scope.customers.push(response.data);
+      $scope.customers.push(response.data.customer);
       $scope.new_customer = {};
       createModal.hide();
     }, function(response) {
@@ -35,7 +35,7 @@ app.controller('CustomersController', ['$scope', '$modal', 'Customer', function(
 
   $scope.updateCustomer = function() {
     Customer.update($scope.customer).then(function(response) {
-      $scope.customers[$scope.customerId] = response.data;
+      $scope.customers[$scope.customerId] = response.data.customer;
       $scope.customer = {};
       $scope.customerId = null;
       editModal.hide();

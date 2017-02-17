@@ -1,6 +1,9 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Customer # {{ customer.id}}</h1>
+    <h1>
+      Customer # {{ customer.id}}
+      <a class="btn btn-default" ui-sref="/customers">Back</a>
+    </h1>
 
     <dl class="dl-horizontal">
       <dt>Name:</dt>
@@ -14,5 +17,46 @@
       <dt>Post code:</dt>
       <dd>{{ customer.post_code }}</dd>
     </dl>
+
+    <h2>
+      Repairs
+      <a ng-click="addRepair()" class="btn btn-success">Add repair</a>
+    </h2>
+
+    <input ng-change="filterRepairs()" ng-model="query" class="form-control" placeholder="Search">
+
+    <div ng-show="repairs.length">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="repair in repairs">
+            <td>{{ repair.name }}</td>
+            <td>{{ repair.status | humanize }}</td>
+            <td>{{ repair.price | currency }}</td>
+            <td>{{ repair.description }}</td>
+            <td>
+              <a class="btn btn-primary btn-xs" ui-sref="/repair({ customerId: customer.id, repairId: repair.id })">Show</a>
+              <a class="btn btn-warning btn-xs" ng-click="editRepair(repair, $index)">Edit</a>
+              <a class="btn btn-danger btn-xs" ng-click="destroyRepair(customer.id, repair.id, $index)">Destroy</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div ng-hide="repairs.length">
+       <div class="alert alert-warning">
+        <strong>Warning!</strong> There isn't any repair yet!
+      </div>
+    </div>
   </div>
 </div>

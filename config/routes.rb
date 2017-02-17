@@ -3,6 +3,12 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+
+    resources :repairs, only: [:create, :update, :show, :destroy] do
+      collection do
+        get :search
+      end
+    end
   end
   root 'main#index'
 end
