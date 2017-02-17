@@ -1,10 +1,11 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Customers</h1>
+    <h1>
+      Customers
+      <a class="btn btn-success" ng-click="addCustomer()">Add customer</a>
+    </h1>
 
-    <a class="btn btn-success">Add customer</a>
-
-    <br />
+    <input type="text" placeholder="Search" class="form-control" ng-model="query" ng-change="filterCustomers()">
 
     <div ng-show="customers.length">
       <table class="table table-striped">
@@ -15,7 +16,7 @@
             <th>Street</th>
             <th>City</th>
             <th>Post code</th>
-            <th colspan="3"></th>
+            <th></th>
           </tr>
         </thead>
 
@@ -26,9 +27,11 @@
             <td>{{ customer.street }}</td>
             <td>{{ customer.city }}</td>
             <td>{{ customer.post_code }}</td>
-            <td><a class="btn btn-primary btn-xs" ui-sref="/customer({ customerId: customer.id })">Show</a></td>
-            <td></td>
-            <td></td>
+            <td>
+              <a class="btn btn-primary btn-xs" ui-sref="/customer({ customerId: customer.id })">Show</a>
+              <a class="btn btn-warning btn-xs" ng-click="editCustomer(customer, $index)">Edit</a>
+              <a class="btn btn-danger btn-xs" ng-click="destroyCustomer(customer.id, $index)">Destroy</a>
+            </td>
           </tr>
         </tbody>
       </table>

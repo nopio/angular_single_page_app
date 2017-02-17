@@ -1,6 +1,7 @@
 //= require angular
 //= require angular-router
 //= require angular-rails-templates
+//= require angular-strap
 //= require jquery
 //= require bootstrap
 //= require cable

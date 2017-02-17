@@ -5,6 +5,10 @@ class CustomersController < ApplicationController
     @customers = Customer.all
   end
 
+  def search
+    @customers = Customer.search(params[:query])
+  end
+
   def show
   end
 

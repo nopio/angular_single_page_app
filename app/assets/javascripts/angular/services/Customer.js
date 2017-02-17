@@ -9,5 +9,29 @@ app.service('Customer', ['$http', function($http) {
 
   this.show = function(customerId) {
     return $http.get(base_url + '/' +  customerId  + '.json')
-  }
+  };
+
+  this.destroy = function(customerId) {
+    return $http.delete(base_url + '/' + customerId + '.json')
+  };
+
+  this.create = function(customer) {
+    return $http.post(base_url + '.json', {
+      customer: customer
+    });
+  };
+
+  this.update = function(customer) {
+    return $http.put(base_url + '/' + customer.id + '.json', {
+      customer: customer
+    });
+  };
+
+  this.search = function(query) {
+    return $http.get(base_url + '/search.json', {
+      params: {
+        query: query
+      }
+    });
+  };
 }]);

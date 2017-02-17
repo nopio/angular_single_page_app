@@ -1,4 +1,4 @@
-var app = angular.module('app', ['templates', 'ui.router']);
+var app = angular.module('app', ['templates', 'ui.router', 'mgcrea.ngStrap']);
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
